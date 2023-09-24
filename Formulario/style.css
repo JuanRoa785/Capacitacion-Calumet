@@ -1,0 +1,118 @@
+body {
+    background-color: rgb(254, 249, 233);
+    margin: 10px;
+    padding: 10px;
+}
+
+h2 {
+    text-align: center;
+    margin: 5px;
+}
+
+#Formulario  {
+    display: inline-block;
+    vertical-align: top;
+    border: 3px solid black;
+    box-shadow: 8px 8px 8px gray;
+    border-radius: 5px;
+    width: 25vw;
+    padding-left: 10px;
+    height: 80vh;
+}
+
+form {
+    text-align: left;
+}
+
+form > p {
+    padding-right: 5px;
+    font-size: 23px;
+    text-align: left;
+    margin: 0px;
+}
+
+input {
+    width:19vw;
+    text-align: left;
+}
+
+#check, #fav{
+    width: auto;
+    display: inline;
+    align-self: center;
+    margin: 0px;
+}
+
+#añadir{
+    width: 95%;
+    border-radius: 3px;
+    box-shadow: 2px 2px gray;
+}
+
+#table {
+    display: inline-block;
+    vertical-align: top;
+    border: 3px solid black;
+    box-shadow: 8px 8px 8px gray;
+    border-radius: 5px;
+    width: 65vw;
+    padding-left: 10px;
+    margin-left: 25px;
+    height: 80vh;
+}
+
+tbody {
+    display: block;
+    margin: 0px;
+    padding: 0px;
+    width: 64vw;/* Cambia el comportamiento del tbody a bloque */
+    overflow-x: auto;
+}
+
+th > button {
+    padding: 0px;
+    margin: 0px;
+}
+
+th, td {
+    background-color: rgb(255, 239, 179);
+    border-radius: 2px;
+    border: 1px solid black;
+    padding: 8px; 
+    text-align: center; 
+}
+
+@media screen and (max-width: 1140px){
+    #Formulario  {
+        margin: auto;
+        border: 3px solid black;
+        box-shadow: 8px 8px 8px gray;
+        border-radius: 5px;
+        width: 90vw;
+        padding-left: 10px;
+        margin-left: 25px;
+        height: 80vh;
+    }
+    input {
+        width:84vw;
+        text-align: left;
+    }
+
+    #table {
+        margin-top: 25px;
+        border: 3px solid black;
+        box-shadow: 8px 8px 8px gray;
+        border-radius: 5px;
+        width: 90vw;
+        padding-left: 10px;
+        margin-left: 25px;
+        height: 80vh;
+    }
+    tbody {
+        display: block; 
+        width: 89vw;/* Cambia el comportamiento del tbody a bloque */
+        overflow-x: auto;
+    }
+}
+
+

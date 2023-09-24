@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="Script.js"></script>
+    <title>Formulario</title>
+</head>
+<body ng-app="form" ng-controller="form_controller">    
+    <div id="Formulario">
+        <h2>Formulario</h2>
+        <form>
+            <p>ID</p><input type="number" ng-model="nuevoFormulario.id">
+            <select ng-model="nuevoFormulario.tipo_ID">
+                <option value="CC">CC</option>
+                <option value="TI">TI</option>
+                <option value="CE">CE</option>
+            </select>
+            <p>Nombre</p><input type="text" ng-model="nuevoFormulario.nombre">
+            <p>Apellido</p><input type="text" ng-model="nuevoFormulario.apellido">
+            <p>Correo</p><input type="text" ng-model="nuevoFormulario.correo">
+            <p>Direccion</p><input type="text" ng-model="nuevoFormulario.direccion">
+            <p>Telefono</p><input type="number" ng-model="nuevoFormulario.telefono"> <br>
+            <input type="checkbox" id="check" ng-model="nuevoFormulario.favorito"> <p id="fav">Favorito</p>
+        </form>
+        <button id="añadir" ng-click="agregarFormulario()"><b>Añadir</b></button>
+    </div>
+         
+           
+    <div id="table">
+        <h2>AGENDA</h2>
+        <table id="Info">
+            <tr class="row">
+                <th>ID</th>
+                <th>Tipo ID</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Correo</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Favorito</th>
+                <th>Up/Down</th>
+                <th>Delete</th>
+            </tr>
+
+            <tr class="row" ng-repeat = "formulario in formularios">
+                <th>{{formulario.id}}</th>
+                <th>{{formulario.tipo_ID}}</th>
+                <th>{{formulario.nombre}}</th>
+                <th>{{formulario.apellido}}</th>
+                <th>{{formulario.correo}}</th>
+                <th>{{formulario.direccion}}</th>
+                <th>{{formulario.telefono}}</th>
+                <th>{{formulario.favorito}}</th>
+                <th><button ng-click="moverArriba($index)">
+                    Up
+                    </button> 
+                    <button ng-click="moverAbajo($index)">
+                    down
+                    </button>
+                </th>
+                <th><button ng-click="deleteFormulario($index)">X</button></th>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
