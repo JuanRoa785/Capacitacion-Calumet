@@ -10,19 +10,29 @@ form.controller('form_controller', function($scope){
         $scope.nuevoFormulario.tipo_ID &&
         $scope.nuevoFormulario.nombre &&
         $scope.nuevoFormulario.apellido &&
-        $scope.nuevoFormulario.correo &&
+        $scope.validarCorreo($scope.nuevoFormulario.correo) &&
         $scope.nuevoFormulario.direccion &&
         $scope.nuevoFormulario.telefono !== undefined
     ) {
         $scope.formularios.push($scope.nuevoFormulario);
         $scope.nuevoFormulario = {tipo_ID:'CC'};
     } else {
-            alert('Por favor, complete todos los campos antes de agregar el formulario.');
+            alert('Por favor, complete todos los campos y asegurese que el correo sea valido');
         }
     }
 
     $scope.deleteFormulario = function(index) {
         $scope.formularios.splice(index, 1)
+    }
+
+    $scope.validarCorreo = function(email){
+        var formatoCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(formatoCorreo.test(email) === true) {
+            return email;
+        }
+        else {
+            return undefined;
+        }
     }
 
     $scope.moverArriba = function(index) {
