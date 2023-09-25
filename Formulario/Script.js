@@ -1,31 +1,33 @@
 var form = angular.module('form', [])
-form.controller('form_controller', function($scope){
+form.controller('form_controller', [form_controller]);
 
-    $scope.nuevoFormulario = {tipo_ID:'CC'};
-    $scope.formularios = [];
+function form_controller() {
+    fC = this;
+    fC.nuevoFormulario = {tipo_ID:'CC'};
+    fC.formularios = [];
 
-    $scope.agregarFormulario = function() {
-    if (
-        $scope.nuevoFormulario.id &&
-        $scope.nuevoFormulario.tipo_ID &&
-        $scope.nuevoFormulario.nombre &&
-        $scope.nuevoFormulario.apellido &&
-        $scope.validarCorreo($scope.nuevoFormulario.correo) &&
-        $scope.nuevoFormulario.direccion &&
-        $scope.nuevoFormulario.telefono !== undefined
-    ) {
-        $scope.formularios.push($scope.nuevoFormulario);
-        $scope.nuevoFormulario = {tipo_ID:'CC'};
-    } else {
-            alert('Por favor, complete todos los campos y asegurese que el correo sea valido');
+    fC.agregarFormulario = function() {
+        if (
+            fC.nuevoFormulario.id &&
+            fC.nuevoFormulario.tipo_ID &&
+            fC.nuevoFormulario.nombre &&
+            fC.nuevoFormulario.apellido &&
+            fC.validarCorreo(fC.nuevoFormulario.correo) &&
+            fC.nuevoFormulario.direccion &&
+            fC.nuevoFormulario.telefono !== undefined
+        ) {
+            fC.formularios.push(fC.nuevoFormulario);
+            fC.nuevoFormulario = {tipo_ID:'CC'};
+        } else {
+                alert('Por favor, complete todos los campos y asegurese que el correo sea valido');
         }
+    };
+
+    fC.deleteFormulario = function(index) {
+        fC.formularios.splice(index, 1)
     }
 
-    $scope.deleteFormulario = function(index) {
-        $scope.formularios.splice(index, 1)
-    }
-
-    $scope.validarCorreo = function(email){
+    fC.validarCorreo = function(email){
         var formatoCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if(formatoCorreo.test(email) === true) {
             return email;
@@ -35,26 +37,30 @@ form.controller('form_controller', function($scope){
         }
     }
 
-    $scope.moverArriba = function(index) {
+    fC.moverArriba = function(index) {
         if (index > 0) {
-            var temp = $scope.formularios[index];
-            $scope.formularios[index] = $scope.formularios[index-1];
-            $scope.formularios[index-1] = temp;
+            var temp =fC.formularios[index];
+            fC.formularios[index] = fC.formularios[index-1];
+            fC.formularios[index-1] = temp;
         }
         else {
             alert('No hay suficientes formularios para subir otra posicion')
         }
     }
 
-    $scope.moverAbajo = function(index) {
-        if (index < $scope.formularios.length - 1) {
-            var temp = $scope.formularios[index];
-            $scope.formularios[index] = $scope.formularios[index + 1];
-            $scope.formularios[index + 1] = temp;
+    fC.moverAbajo = function(index) {
+        if (index < fC.formularios.length - 1) {
+            var temp = fC.formularios[index];
+            fC.formularios[index] = fC.formularios[index + 1];
+            fC.formularios[index + 1] = temp;
         }
         else {
             alert('No hay suficientes formularios para bajar otra posicion')
         }  
-    }
-});
+    };
+}
+
+
+
+
 

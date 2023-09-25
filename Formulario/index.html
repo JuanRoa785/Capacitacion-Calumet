@@ -8,24 +8,24 @@
     <script src="./Script.js"></script>
     <title>Formulario</title>
 </head>
-<body ng-app="form" ng-controller="form_controller">    
+<body ng-app="form" ng-controller="form_controller as fC">    
     <div id="Formulario">
         <h2>Formulario</h2>
         <form>
-            <p>ID</p><input type="number" ng-model="nuevoFormulario.id">
-            <select ng-model="nuevoFormulario.tipo_ID">
+            <p>ID</p><input type="number" ng-model="fC.nuevoFormulario.id">
+            <select ng-model="fC.nuevoFormulario.tipo_ID">
                 <option value="CC">CC</option>
                 <option value="TI">TI</option>
                 <option value="CE">CE</option>
             </select>
-            <p>Nombre</p><input type="text" ng-model="nuevoFormulario.nombre">
-            <p>Apellido</p><input type="text" ng-model="nuevoFormulario.apellido">
-            <p>Correo</p><input type="text" ng-model="nuevoFormulario.correo">
-            <p>Direccion</p><input type="text" ng-model="nuevoFormulario.direccion">
-            <p>Telefono</p><input type="number" ng-model="nuevoFormulario.telefono"> <br>
-            <input type="checkbox" id="check" ng-model="nuevoFormulario.favorito"> <p id="fav">Favorito</p>
+            <p>Nombre</p><input type="text" ng-model="fC.nuevoFormulario.nombre">
+            <p>Apellido</p><input type="text" ng-model="fC.nuevoFormulario.apellido">
+            <p>Correo</p><input type="text" ng-model="fC.nuevoFormulario.correo">
+            <p>Direccion</p><input type="text" ng-model="fC.nuevoFormulario.direccion">
+            <p>Telefono</p><input type="number" ng-model="fC.nuevoFormulario.telefono"> <br>
+            <input type="checkbox" id="check" ng-model="fC.nuevoFormulario.favorito"> <p id="fav">Favorito</p>
         </form>
-        <button id="añadir" ng-click="agregarFormulario()"><b>Añadir</b></button>
+        <button id="añadir" ng-click="fC.agregarFormulario()"><b>Añadir</b></button>
     </div>
          
            
@@ -45,7 +45,7 @@
                 <th>Delete</th>
             </tr>
 
-            <tr class="row" ng-repeat = "formulario in formularios">
+            <tr class="row" ng-repeat = "formulario in fC.formularios">
                 <th>{{formulario.id}}</th>
                 <th>{{formulario.tipo_ID}}</th>
                 <th>{{formulario.nombre}}</th>
@@ -54,14 +54,14 @@
                 <th>{{formulario.direccion}}</th>
                 <th>{{formulario.telefono}}</th>
                 <th>{{formulario.favorito}}</th>
-                <th><button ng-click="moverArriba($index)">
+                <th><button ng-click="fC.moverArriba($index)">
                     Up
                     </button> 
-                    <button ng-click="moverAbajo($index)">
+                    <button ng-click="fC.moverAbajo($index)">
                     down
                     </button>
                 </th>
-                <th><button ng-click="deleteFormulario($index)">X</button></th>
+                <th><button ng-click="fC.deleteFormulario($index)">X</button></th>
             </tr>
         </table>
     </div>
