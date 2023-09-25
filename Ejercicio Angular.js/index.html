@@ -11,18 +11,18 @@
     <script src="./script.js"></script>
     <title>Listas - AngularJS</title>
 </head>
-<body ng-app="app" ng-controller="homework_controller">
+<body ng-app="app" ng-controller="homework_controller as hC">
     <div id="container">
         <h2>Lista de Tareas</h2>
         <form>
-            <input type="text" id="input" placeholder="Agregar Tarea" ng-model="nuevaTarea" ng-keyup="agregarConEnter($event)">
-            <button type="button" ng-click="agregarTarea()">Agregar</button>
+            <input type="text" id="input" placeholder="Agregar Tarea" ng-model="hC.nuevaTarea" ng-keyup="hC.agregarConEnter($event)">
+            <button type="button" ng-click="hC.agregarTarea()">Agregar</button>
         </form>
 
         <ul>
-            <li ng-repeat="tarea in Tareas">
+            <li ng-repeat="tarea in hC.Tareas">
                 Tarea {{$index+1}} - {{tarea}}
-                <button ng-click = "eliminarTarea($index)">X</button>
+                <button ng-click = "hC.eliminarTarea($index)">X</button>
             </li>
         </ul>
     </div>
