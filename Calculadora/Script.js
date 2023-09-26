@@ -79,7 +79,3 @@ function calc_controller() {
         cC.resultado = "";
     };
 }; 
-
-
-
-
