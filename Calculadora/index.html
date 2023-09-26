@@ -8,54 +8,54 @@
     <script src="./Script.js"> </script>
     <title>Calculadora</title>
 </head>
-<body ng-controller="calc_controller">
+<body ng-controller="calc_controller as cC">
     <div id="contenedor">
         <table>
             <tr class="Pantallas">
-                <th><button type="text" disabled id="Pantalla1">{{numero1}}</button></th>
-                <th><label id = "operador" ng-model="operador">{{operador}}</label></th>
-                <th><button type="text" disabled id="Pantalla2">{{numero2}}</button></th>
+                <th><button type="text" disabled id="Pantalla1" ng-model="cC.numero1">{{cC.numero1}}</button></th>
+                <th><label id = "operador" ng-model="cC.operador">{{cC.operador}}</label></th>
+                <th><button type="text" disabled id="Pantalla2" ng-model="cC.numero2">{{cC.numero2}}</button></th>
                 <th><label id="icono_resultado"> = </label></th>
-                <th><button type="text" disabled id="resultado">{{resultado}}</button></th>
+                <th><button type="text" disabled id="resultado" ng-model="cC.resultado">{{cC.resultado}}</button></th>
             </tr>
 
             <tr class="botones">
-                <th><button type="text" ng-click="agregarNumero(1)">1</button></th>
-                <th><button type="text" ng-click="agregarNumero(2)">2</button></th>
-                <th><button type="text" ng-click="agregarNumero(3)">3</button></th>
+                <th><button type="text" ng-click="cC.agregarNumero(1)">1</button></th>
+                <th><button type="text" ng-click="cC.agregarNumero(2)">2</button></th>
+                <th><button type="text" ng-click="cC.agregarNumero(3)">3</button></th>
                 <th></th>
-                <th><button type="text" ng-click="elegirOperador('+')">+</button></th>                       
+                <th><button type="text" ng-click="cC.elegirOperador('+')">+</button></th>                       
             </tr>
             <tr class="botones">
-                <th><button type="text" ng-click="agregarNumero(4)">4</button></th>
-                <th><button type="text" ng-click="agregarNumero(5)">5</button></th>
-                <th><button type="text" ng-click="agregarNumero(6)">6</button></th>
+                <th><button type="text" ng-click="cC.agregarNumero(4)">4</button></th>
+                <th><button type="text" ng-click="cC.agregarNumero(5)">5</button></th>
+                <th><button type="text" ng-click="cC.agregarNumero(6)">6</button></th>
                 <th></th>
-                <th><button type="text" ng-click="elegirOperador('-')">-</button></th>                       
+                <th><button type="text" ng-click="cC.elegirOperador('-')">-</button></th>                       
             </tr>
             <tr class="botones">
-                <th><button type="text" ng-click="agregarNumero(7)">7</button></th>
-                <th><button type="text" ng-click="agregarNumero(8)">8</button></th>
-                <th><button type="text" ng-click="agregarNumero(9)">9</button></th>
+                <th><button type="text" ng-click="cC.agregarNumero(7)">7</button></th>
+                <th><button type="text" ng-click="cC.agregarNumero(8)">8</button></th>
+                <th><button type="text" ng-click="cC.agregarNumero(9)">9</button></th>
                 <th></th>
-                <th><button type="text" ng-click="elegirOperador('x')">x</button></th>                       
+                <th><button type="text" ng-click="cC.elegirOperador('x')">x</button></th>                       
             </tr>
             <tr class="botones">
-                <th><button type="text" ng-click="borrarUltimo()">DEL</button></th>
-                <th><button type="text" ng-click="agregarNumero(0)">0</button></th>
-                <th><button type="text" ng-click="reset()">Reset</button></th>
+                <th><button type="text" ng-click="cC.borrarUltimo()">DEL</button></th>
+                <th><button type="text" ng-click="cC.agregarNumero(0)">0</button></th>
+                <th><button type="text" ng-click="cC.reset()">Reset</button></th>
                 <th></th>
-                <th><button type="text" ng-click="elegirOperador('/')">/</button></th>                       
+                <th><button type="text" ng-click="cC.elegirOperador('/')">/</button></th>                       
             </tr>
             <tr>
                 <th>
-                    <select id="pantalla_selector" ng-model="selectedOption" ng-change="cambioPantalla(selectedOption)">
-                        <option value="p1" ng-click="seleccionarPantalla(1)">Pantalla1</option>
-                        <option value="p2" ng-click="seleccionarPantalla(2)">Pantalla2</option>
+                    <select id="pantalla_selector" ng-model="cC.selectedOption" ng-change="cC.cambioPantalla()">
+                        <option value="p1">Pantalla1</option>
+                        <option value="p2">Pantalla2</option>
                     </select>
                 </th>
                 <th></th>
-                <th><button type="text" ng-click="calcular()">=</button></th>
+                <th><button type="text" ng-click="cC.calcular()">=</button></th>
                 <th></th>
                 <th></th>
             </tr>
