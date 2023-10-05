@@ -1,0 +1,86 @@
+
+body {
+    background-color: rgb(246, 225, 178);
+    zoom:1.4;
+    margin: 0px;
+    padding: 0px;
+}
+
+#container {
+    border: 3px outset red;
+    background-color: rgb(212, 255, 254);
+    border-radius: 3px;
+    box-shadow: 7px 8px 8px gray;
+    width: 60vw;
+    margin: auto;
+    margin-top: 15px;
+}
+
+#container > h2 {
+    text-align: center;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 3vw;
+    margin: 5px;
+}
+
+form {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+form > input {
+    width: 49vw;
+    font-family: 'Share Tech Mono', monospace;
+    box-shadow: 3px 5px 5px gray;
+}
+
+
+form > button {
+    margin-left: 8px;
+    border-radius: 2px;
+    font-family: 'Share Tech Mono', monospace;
+    background-color: rgb(156, 255, 187);
+    border: 3px outset gray;
+    box-shadow: 3px 5px 5px gray;
+    
+}
+
+ul > li {
+    font-family: 'Share Tech Mono', monospace;
+    box-shadow: 3px 5px 5px gray;
+    border: 3px double black;
+    list-style:square;
+    width: 47.5vw;
+    padding-left: 5px;
+    margin-bottom: 10px;
+}
+
+li > button {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    font-family: 'Share Tech Mono', monospace;
+    background-color: rgb(255, 0, 0);
+    color: white;
+    border: 3px outset gray;
+    box-shadow: 3px 3px 3px gray;
+}
+
+@media screen and (max-width: 1103px){ 
+    #container > h2 {
+        text-align: center;
+        font-family: 'Share Tech Mono', monospace;
+        font-size: 3.5vw;
+        margin: 5px;
+    }
+
+    form > input {
+        width: 55vw;
+        box-shadow: 5px 5px 5px gray;
+        
+    }
+    form > button {
+        margin-top: 10px;
+        box-shadow: 5px 5px 5px gray;
+
+    }
+}

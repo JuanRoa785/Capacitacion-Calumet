@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./style.css">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Alkatra&family=Oswald:wght@500&family=Roboto&family=Share+Tech+Mono&display=swap');
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+        <script src="./script.js"></script>
+        <title>Listas - AngularJS</title>    
+    </head>
+    <body ng-app="app" ng-controller="homework_controller as hC">
+        <div id="container">
+            <h2>Lista de Tareas</h2>
+            <form>
+                <input type="text" id="input" placeholder="Agregar Tarea" ng-model="hC.nuevaTarea" ng-keyup="hC.agregarConEnter($event)">
+                <button type="button" ng-click="hC.agregarTarea()">Agregar</button>
+            </form>
+
+            <ul>
+                <li ng-repeat="tarea in hC.Tareas">
+                    Tarea {{$index + 1}} - {{tarea.contenido}}
+                    <button ng-click = "hC.eliminarTarea($index)">X</button>
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>
