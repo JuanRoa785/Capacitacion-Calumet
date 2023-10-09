@@ -4,5 +4,4 @@ En este repositorio se han anexado los diferentes ejercicios que se han hecho a 
 # Nota
 Para uno de los ultimos ejercicios (Universidad_JSP), ya que es mas "complejo" (porque tiene mas elementos), se hizo este breve video donde se hace 
 una demostracion practica de lo que hace el codigo:
-
-# Enlace - https://youtu.be/X-sf9HBnKqo 
+Enlace - https://youtu.be/X-sf9HBnKqo 
