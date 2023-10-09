@@ -1,0 +1,142 @@
+
+body {
+    background-color: rgb(254, 249, 233);
+    margin: 15px !important;
+    padding: 15px !Important;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.title {
+    text-align: center;
+    margin: 3px;
+}
+
+#Formulario  {
+    display: inline-block;
+    vertical-align: top;
+    border: 3px solid black;
+    box-shadow: 8px 8px 8px gray;
+    border-radius: 5px;
+    width: 25.5vw;
+    padding-left: 10px;
+    height: 90vh;
+}
+
+.text {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 3px;
+    margin:0px !important;
+    padding: 0px;
+}
+
+.chooser {
+    width: 95%;
+    border-radius: 3px;
+    margin-bottom: 4px;
+    height: 25px;
+    box-shadow: 2px 2px gray;
+    font-size: 16px;
+    
+}
+
+.Añadir{
+    margin-bottom: 5px;
+    width: 95%;
+    border-radius: 3px;
+    box-shadow: 2px 2px gray;
+    background-color: rgb(158, 255, 159);
+    height: 26px;
+}
+
+.Eliminar {
+    width: 95%;
+    height: 27px;
+    border-radius: 3px;
+    box-shadow: 2px 2px gray;
+    background-color: rgb(255, 3, 3);
+    color: white;
+}
+
+#Info {
+    table-layout: fixed;
+    width: 98.5%; /* Usa el 100% del contenedor */
+}
+
+#table {
+    display: inline-block;
+    vertical-align: top;
+    border: 3px solid black;
+    box-shadow: 8px 8px 8px gray;
+    border-radius: 5px;
+    width: 65vw;
+    padding-left: 10px;
+    margin-left: 25px;
+    height: 90vh;
+}
+
+#Info {
+    border-collapse: separate; /* Separa los bordes de las celdas */
+    border-spacing: 3px; /* Espacio entre las celdas */
+}
+
+tbody {
+    margin-bottom: 5px !important;
+    padding: 0px !important;
+    width: 64vw;/* Cambia el comportamiento del tbody a bloque */
+    overflow-x: auto;
+}
+
+th > button {
+    padding: 0px;
+    margin: 0px;
+    width: 40%;
+}
+
+.delete_TButton {
+    background-color: rgb(255, 3, 3);
+    font-size: 15px;
+    box-shadow: 2px 2px gray;
+    color: white;
+}
+
+th, td {
+    background-color: rgb(255, 239, 179);
+    border-radius: 2px;
+    border: 1px solid black;
+    padding: 8px; 
+    text-align: center; 
+}
+
+
+@media screen and (max-width: 1140px){
+    
+    #Formulario  {
+        margin: auto;
+        border: 3px solid black;
+        box-shadow: 8px 8px 8px gray;
+        border-radius: 5px;
+        width: 90vw;
+        padding-left: 10px;
+        margin-left: 25px;
+        height: 70vh;
+    }
+
+    #table {
+        margin-top: 25px;
+        border: 3px solid black;
+        box-shadow: 8px 8px 8px gray;
+        border-radius: 5px;
+        width: 90vw;
+        padding-left: 10px;
+        margin-left: 25px;
+        height: 70vh;
+    }
+    
+    tbody {
+        width: 89vw;/* Cambia el comportamiento del tbody a bloque */
+        overflow-x: auto;
+    }
+}
+
+

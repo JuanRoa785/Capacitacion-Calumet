@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Alkatra&family=Oswald:wght@500&family=Roboto&family=Share+Tech+Mono&display=swap');
+        </style>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="./style.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+        <script src="./script.js"></script>
+        <title>Universidad_JSP</title>
+    </head>
+    <body ng-app="uni" ng-controller="uni_controller as uC">    
+        <div id="Formulario">
+            <h2 class="title">MENU</h2>
+            <form>
+                <p class="text">Seleccione una Facultad:</p>
+                <select class="chooser" ng-model="uC.facultadActual" ng-change="uC.cargarEscuelas()">
+                    <option ng-repeat="facultad in uC.facultades">{{facultad.nombre}}</option>
+                </select>
+                <Br>
+                <button type="button" class="Añadir" data-bs-toggle="modal" data-bs-target="#añadirFacultad">
+                    <b>Añadir Facultad</b>
+                </button>
+                <button type="button" class="Eliminar" data-bs-toggle="modal" data-bs-target="#EliminarFacultad">
+                    <b>Eliminar Facultad</b>
+                </button>
+                <Br>
+                <Br>
+                <p class="text">Seleccione una Escuela:</p>
+                <select class="chooser" ng-model="uC.escuelaActual" ng-change="uC.cargarEstudiantes()">
+                    <option ng-repeat="escuela in uC.escuelas">{{escuela.nombre}}</option>
+                </select>
+                <Br>
+                <button type="button" class="Añadir" data-bs-toggle="modal" data-bs-target="#añadirEscuela"><b>Añadir Escuela</b></button>
+                <button type="button" class="Eliminar" data-bs-toggle="modal" data-bs-target="#eliminarEscuela"><b>Eliminar Escuela</b></button>
+
+                <Br>
+                <Br>
+                <p class="text">¿Desea Manejar estudiantes?</p>
+                <button type="button" Class="Añadir" data-bs-toggle="modal" data-bs-target="#añadirEstudiante"><b>Añadir Estudiante</b></button>
+                <button type="button" Class="Eliminar" data-bs-toggle="modal" data-bs-target="#eliminarEstudiante"><b>Eliminar Estudiante</b></button>
+            </form>
+        </div>
+
+
+        <div id="table">
+            <h2 class="title">Estudiantes</h2>
+            <table id="Info">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Semestre</th>
+                    <th>Promedio</th>
+                    <th>Up/Down</th>
+                </tr>
+
+                <tr ng-repeat = "estu in uC.estudiantes">
+                    <th>{{estu.id}}</th>
+                    <th>{{estu.nombre}}</th>
+                    <th>{{estu.semestre}}</th>
+                    <th>{{estu.promedio}}</th>
+                    <th><button ng-click="uC.moverArriba($index)">
+                            Up
+                        </button> 
+                        <button ng-click="uC.moverAbajo($index)">
+                            down
+                        </button>
+                    </th>
+                </tr>
+            </table>
+        </div>
+
+        <div class="modal" id="añadirFacultad">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title">Añadir Facultad</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form> <p class="text" >Digite el nombre de la <b>facultad</b> a agregar:</p> 
+                            <input ng-model="uC.NuevaFacultad"type="text" class="form-control" ng-keyup="uC.agregarFacultadConEnter($event)">  
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-success" ng-click="uC.agregarFacultad()">Añadir</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="EliminarFacultad">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title">Eliminar Facultad</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <p class="text">Seleccione la <b>Facultad</b> a ELIMINAR:</p>
+                        <select class="w-100 chooser" ng-model="uC.facultadAEliminar">
+                            <option ng-repeat="facultad in uC.facultades">{{facultad.nombre}}</option>
+                        </select>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" ng-click="uC.eliminarFacultad()">¿ELIMINAR?</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="añadirEscuela">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title">Añadir Escuela</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form> 
+                            <p class="text">Seleccione la <b>Facultad</b> a la que pertenecera la <b>Escuela</b> a AGREGAR:</p>
+                            <select class="w-100 chooser" ng-model="uC.facultadAuxiliar">
+                                <option ng-repeat="facultad in uC.facultades">{{facultad.nombre}}</option>
+                            </select>
+                            <br>
+                            <br>
+                            <p class="text" >Digite el nombre de la <b>Escuela</b> a agregar:</p> 
+                            <input type="text" class="form-control" ng-model="uC.nuevaEscuela" ng-keyup="uC.agregarEscuelaConEnter($event)"> 
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" ng-click="uC.agregarEscuela()">Añadir</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="eliminarEscuela">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title">Eliminar Escuela</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <p class="text">Seleccione la <b>Facultad</b> a la que pertenece la <b>Escuela</b> a ELIMINAR:</p>
+                        <select class="w-100 chooser" ng-model="uC.facultadAuxiliar" ng-change="uC.cargarEscuelasAux()">
+                            <option ng-repeat="facultad in uC.facultades">{{facultad.nombre}}</option>
+                        </select>
+                        <br>
+                        <br>
+                        <p class="text">Seleccione la <b>Escuela</b> a ELIMINAR:</p>
+                        <select class="w-100 chooser" ng-model="uC.escuelaAEliminar">
+                            <option ng-repeat="escuela in uC.escuelasAux">{{escuela.nombre}}</option>
+                        </select>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" ng-click="uC.eliminarEscuela()">¿ELIMINAR?</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="añadirEstudiante">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title">Añadir Estudiante</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form> 
+                            <p class="text">Seleccione la <b>Facultad</b> a la que pertenecera el <b>Estudiante</b> a AGREGAR:</p>
+                            <select class="w-100 chooser" ng-model="uC.facultadAuxiliar" ng-change="uC.cargarEscuelasAux()">
+                                <option ng-repeat="facultad in uC.facultadesAux">{{facultad.nombre}}</option>
+                            </select>
+                            <br>
+                            <br>
+                            <p class="text">Seleccione la <b>Escuela</b> a la que pertenecera el <b>Estudiante</b> a AGREGAR:</p>
+                            <select class="w-100 chooser" ng-model="uC.escuelaAuxiliar">
+                                <option ng-repeat="escuela in uC.escuelasAux">{{escuela.nombre}}</option>
+                            </select>
+                            <br>
+                            <br>
+                            <p class="text">Digite el nombre del <b>Estudiante</b></p> 
+                            <input type="text" class="form-control" ng-model="uC.nomNuevoEstudiante" ng-keyup="uC.agregarEstudianteConEnter($event)"> 
+                            <p class="text">Digite el semestre del <b>Estudiante</b></p> 
+                            <input type="number" class="form-control" ng-model="uC.semNuevoEstudiante" ng-keyup="uC.agregarEstudianteConEnter($event)"> 
+                            <p class="text" >Digite el promedio del <b>Estudiante</b></p> 
+                            <input type="number" class="form-control" ng-model="uC.promNuevoEstudiante" ng-keyup="uC.agregarEstudianteConEnter($event)"> 
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" ng-click="uC.agregarEstudiante()">Añadir</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="eliminarEstudiante">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="modal-title">Eliminar Estudiante</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form> 
+                            <p class="text">Seleccione la <b>Facultad</b> a la que pertenece el <b>Estudiante</b> a ELIMINAR:</p>
+                            <select class="w-100 chooser" ng-model="uC.facultadAuxiliar" ng-change="uC.cargarEscuelasAux()">
+                                <option ng-repeat="facultad in uC.facultadesAux">{{facultad.nombre}}</option>
+                            </select>
+                            <br>
+                            <br>
+                            <p class="text">Seleccione la <b>Escuela</b> a la que pertenece el <b>Estudiante</b> a ELIMINAR:</p>
+                            <select class="w-100 chooser" ng-model="uC.escuelaAuxiliar" ng-change="uC.cargarEstudiantesAux()">
+                                <option ng-repeat="escuela in uC.escuelasAux">{{escuela.nombre}}</option>
+                            </select>
+                            <br>
+                            <br>
+                            <p class="text" >Seleccione el <b>Estudiante</b> a ELIMINAR:</p> 
+                            <select class="w-100 chooser" ng-model="uC.estudianteAEliminar">
+                                <option ng-repeat="estudiante in uC.estudiantesAux">{{estudiante.nombre}}</option>
+                            </select>
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" ng-click="uC.eliminarEstudiante()">¿ELIMINAR?</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
